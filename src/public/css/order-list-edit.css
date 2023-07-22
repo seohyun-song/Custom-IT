@@ -1,18 +1,9 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
+@import './layout.css';
 
 .aside-section-wrap {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-}
-html,
-body {
-    height: 100%;
-    margin: 0;
 }
 
 .contents-inner2 {

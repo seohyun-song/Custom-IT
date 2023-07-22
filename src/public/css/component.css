@@ -1,0 +1,22 @@
+/* 
+    인풋 
+*/
+/* 초기화 */
+.input {
+    appearance: none;
+    border: none;
+    background-color: none;
+    box-sizing: border-box;
+}
+
+/* 
+    버튼 
+*/
+/* 초기화 */
+.btn {
+    appearance: none;
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}

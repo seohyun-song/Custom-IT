@@ -1,3 +1,5 @@
+@import './layout.css';
+
 /* 메인 페이지 */
 .intro-main {
     display: flex;

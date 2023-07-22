@@ -1,9 +1,5 @@
-/* .container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-} */
+@import './layout.css';
+
 .cancel-message {
     color: #a19a9a;
     /* font-family: Jomhuria; */

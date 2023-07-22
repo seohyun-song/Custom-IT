@@ -1,13 +1,4 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-    color: #2f3438;
-}
+@import './layout.css';
 
 .user-aside {
     display: flex;

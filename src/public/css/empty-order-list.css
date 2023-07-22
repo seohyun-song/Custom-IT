@@ -1,16 +1,4 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-
-main .contents-inner {
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(255, 255, 255);
-    width: 1280px;
-    margin: 0 auto;
-}
+@import './layout.css';
 
 .user-aside {
     display: flex;
