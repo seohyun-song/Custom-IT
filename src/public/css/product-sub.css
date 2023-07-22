@@ -1,11 +1,6 @@
 @import './layout.css';
 
 /* 서브 페이지 */
-a {
-    text-decoration: none;
-    color: #303030;
-}
-
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -44,17 +39,14 @@ a {
 }
 
 .product-list .product .btn-add-cart {
-    display: inline-block;
+    z-index: 100;
     position: absolute;
     right: 10px;
     bottom: 10px;
     width: 28px;
     height: 28px;
-    border: none;
-    outline: none;
     border-radius: 50%;
     background: #a586f6 url('../image/icon-cart-white.png') no-repeat center / 16px;
-    cursor: pointer;
 }
 
 .product-list .product .product-info {

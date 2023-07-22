@@ -9,51 +9,51 @@
         <header class="header"><%- include('../views/partials/header'); %></header>
         <main role="main" class="contents">
             <div class="contents-inner">
-                <div class="user-secession-wrap">
-                    <section class="user-aside">
-                        <div id="snb" class="snb_my">
-                            <h2 class="tit_snb">마이페이지</h2>
-                            <div class="inner_sub">
-                                <ul class="list_menu">
-                                    <li class="on">
-                                        <a href="/order/<%= userInfo.userId %>/orderList">
-                                            주문 내역
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/users/info">개인 정보 수정</a>
-                                    </li>
-                                    <li>
-                                        <a href="/users/info/edit/pw">비밀번호 변경</a>
-                                    </li>
-                                    <li>
-                                        <a href="/users/info/delete">회원 탈퇴 하기</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                    <div class="user-secession">
-                        <section>
-                            <div class="title">회원탈퇴안내</div>
-                            <div class="top">
+                <div class="section-aside-wrap">
+                    <aside class="aside">
+                        <nav class="sidebar">
+                            <h2 class="title">마이페이지</h2>
+                            <ul class="sidebar-menu">
+                                <li class="on">
+                                    <a
+                                        class="btn menu"
+                                        href="/order/<%= userInfo.userId %>/orderList"
+                                    >
+                                        주문 내역
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn menu" href="/users/info">개인 정보 수정</a>
+                                </li>
+                                <li>
+                                    <a class="btn menu" href="/users/info/edit/pw">비밀번호 변경</a>
+                                </li>
+                                <li>
+                                    <a class="btn menu" href="/users/info/delete">회원 탈퇴 하기</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+                    <section class="section">
+                        <h2 class="title">회원 탈퇴 안내</h2>
+                        <div class="contents">
+                            <div class="user-secession">
                                 <div class="info">
-                                    <div>
+                                    <div class="paragraph">
                                         <p>
                                             고객님께서 회원 탈퇴를 원하신다니 저희 쇼핑몰의 서비스가
-                                            많이 부족하고 미흡했나 봅니다. 불편하셨던 점이나
-                                            불만사항을 알려주시면 적극 반영해서 고객님의 불편함을
-                                            해결해 드리도록 노력하겠습니다.
+                                            많이 부족하고 미흡했나 봅니다.<br />
+                                            불편하셨던 점이나 불만사항을 알려주시면 적극 반영해서
+                                            고객님의 불편함을 해결해 드리도록 노력하겠습니다.
                                         </p>
                                     </div>
-                                    <div>
+                                    <div class="paragraph">
                                         <span
                                             >아울러 회원 탈퇴시의 아래 사항을 숙지하시기
                                             바랍니다.</span
                                         >
                                     </div>
-                                    <div>
+                                    <div class="paragraph">
                                         <p>
                                             1. 회원 탈퇴 시 고객님의 정보는 상품 반품 및 A/S를 위해
                                             전자상거래 등에서의 소비자 보호에 관한 법률에 의거한
@@ -70,20 +70,21 @@
                                     </div>
                                 </div>
                                 <div class="password">
-                                    <label>비밀번호 확인<span>*</span></label>
+                                    <label for="passwordInput"><span>비밀번호 확인</span></label>
                                     <input
+                                        class="input input-box"
                                         type="password"
                                         id="passwordInput"
                                         placeholder="현재 사용중인 비밀번호를 입력해주세요"
                                     />
                                 </div>
                             </div>
-                        </section>
-                        <div class="btn-bottom">
-                            <a href="/users/info" class="btn-cancel">취소</a>
-                            <a href="#" id="btnSecession" class="btn-secede">탈퇴하기</a>
+                            <div class="tbl-btn-box">
+                                <a href="/users/info" class="btn btn-main-line">취소</a>
+                                <a href="#" id="btnSecession" class="btn btn-main">탈퇴하기</a>
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </main>

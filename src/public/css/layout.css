@@ -118,12 +118,12 @@
 /*
     main
 */
-.contents {
+main.contents {
     min-height: 100%;
     padding-bottom: 400px;
 }
 
-.contents .contents-inner {
+main.contents .contents-inner {
     width: 1280px;
     margin: 0 auto;
     padding: 120px 20px 100px;
@@ -181,4 +181,68 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+/*
+    section-aside-wrap
+*/
+.section-aside-wrap {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding: 0 60px;
+    box-sizing: border-box;
+}
+
+.section-aside-wrap .section {
+    flex: 1;
+}
+
+.section-aside-wrap .section .title {
+    padding-bottom: 20px;
+    font-size: 28px;
+}
+
+/*
+    sidebar
+*/
+.sidebar {
+    width: 200px;
+}
+
+.sidebar .title {
+    padding-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.sidebar .sidebar-menu {
+    border: 1px solid #f2f2f2;
+}
+
+.sidebar .sidebar-menu > li {
+    border-bottom: 1px solid #f2f2f2;
+}
+.sidebar .sidebar-menu > li:last-child {
+    border-bottom: none;
+}
+
+.sidebar .sidebar-menu > li .menu {
+    display: block;
+    padding: 15px 0 15px 20px;
+    box-sizing: border-box;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+}
+
+.sidebar .sidebar-menu > li .menu:hover {
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px
+        52%;
+    background-size: 6px 11px;
+    color: #666;
 }
