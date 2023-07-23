@@ -1,0 +1,190 @@
+/* 
+    인풋 
+*/
+/* 초기화 */
+.input {
+    appearance: none;
+    border: none;
+    outline: none;
+    background-color: none;
+    box-sizing: border-box;
+}
+
+/* 스타일 */
+.input-box {
+    width: 300px;
+    height: 46px;
+    padding: 0 10px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.input-box::placeholder {
+    color: #a8a8a8;
+}
+
+.input-box:focus {
+    border-color: #333;
+}
+
+/* 
+    버튼 
+*/
+/* 초기화 */
+.btn {
+    display: inline-block;
+    appearance: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    background: transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* 메인버튼 */
+.btn-main {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #333;
+    font-size: 16px;
+    color: #fff;
+}
+
+.btn-main:hover {
+    background-color: #3c3c3c;
+}
+
+/* 메인버튼-라인 */
+.btn-main-line {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    height: 46px;
+    padding: 0 16px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+}
+
+.btn-main-line:hover {
+    background-color: #eee;
+}
+
+/*
+    table
+*/
+/* 초기화 */
+.tbl {
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0;
+}
+
+.tbl th,
+td {
+    box-sizing: border-box;
+}
+
+/* 스타일 */
+.tbl-caption {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+
+.tbl-caption span {
+    position: relative;
+    padding-right: 4px;
+    font-size: 14px;
+}
+
+.tbl-caption span::before {
+    content: '*';
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    color: red;
+}
+
+.tbl-box {
+    border-top: 1px solid #535470;
+    border-bottom: 1px solid #f2f2f4;
+}
+
+.tbl > tbody > tr > th {
+    vertical-align: middle;
+    height: 56px;
+    padding: 5px 10px 5px 16px;
+    border-bottom: 1px solid #f2f2f4;
+    text-align: left;
+    font-size: 13px;
+    color: #535470;
+    line-height: 16px;
+    font-weight: normal;
+    word-break: keep-all;
+}
+
+.tbl > tbody > tr > th:first-child {
+    border-left: none;
+}
+
+.tbl > tbody > tr > td {
+    height: 56px;
+    padding: 8px 10px;
+    border-bottom: 1px solid #f2f2f4;
+    text-align: left;
+    font-size: 13px;
+    color: #535470;
+    line-height: 16px;
+    background: #ffffff;
+}
+
+.tbl > tbody > tr > td .btn {
+    margin-left: 10px;
+}
+
+.tbl > tbody > tr:last-child > th {
+    border-bottom: none;
+}
+
+.tbl > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+
+.tbl > tbody > tr > th .required {
+    position: relative;
+    padding-right: 4px;
+}
+
+.tbl > tbody > tr > th .required::before {
+    content: '*';
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    color: red;
+}
+
+.tbl-btn-box {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.tbl .msg {
+    margin-top: 4px;
+}

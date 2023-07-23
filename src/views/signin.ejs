@@ -10,100 +10,136 @@
         <main role="main" class="contents">
             <div class="contents-inner">
                 <div class="signin-wrap">
-                    <div class="signin-text">회원가입</div>
-                    <section class="top">
-                        <div class="email">
-                            <label>이메일</label>
-                            <input
-                                type="text"
-                                id="emailInput"
-                                placeholder="예: customit@custom.com"
-                                onchange="validateEmail()"
-                            />
-                            <div class="email-check" id="emailCheckBtn">
-                                <button href="#" onclick="checkEmailDuplicate()">중복확인</button>
-                            </div>
-                        </div>
-                        <p id="emailCheck"></p>
-                        <div class="password">
-                            <label>비밀번호</label>
-                            <input
-                                type="password"
-                                id="passwordInput"
-                                placeholder="비밀번호를 입력해주세요"
-                                onchange="validatePassword()"
-                            />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <p id="passwordCheck"></p>
-                        <div class="password-confirm">
-                            <label>비밀번호확인</label>
-                            <input
-                                type="password"
-                                id="passwordInputConfirm"
-                                placeholder="비밀번호를 한번 더 입력해주세요"
-                                onchange="validatePasswordConfirm()"
-                            />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <p id="pwConfirmCheck"></p>
-                        <div class="name">
-                            <label>이름</label>
-                            <input
-                                type="text"
-                                id="nameInput"
-                                placeholder="이름은 2~4글자로 입력해주세요."
-                                onchange="validateName()"
-                            />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <p id="nameCheck"></p>
-                        <div class="phone-num">
-                            <label>휴대폰</label>
-                            <input
-                                type="tel"
-                                id="phoneNumInput"
-                                placeholder="'-' 없이 번호만 입력해주세요"
-                                onchange="validatePhoneNum()"
-                                maxlength="13"
-                            />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <p id="phoneNumCheck"></p>
-                        <div class="address">
-                            <label>주소</label>
-                            <input
-                                type="text"
-                                id="addressInput"
-                                placeholder="우측 주소 검색을 클릭해주세요"
-                                readonly
-                            />
-                            <div class="address-check" id="addressCheckBtn">
-                                <div>
-                                    <button href="#" onclick="openKakaoMap()">주소검색</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail-address">
-                            <label>상세주소</label>
-                            <input
-                                type="text"
-                                id="detailAddress"
-                                placeholder="상세주소를 입력해주세요"
-                            />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                    </section>
-                    <div class="bottom-wrap">
-                        <a href="#" id="btn-signin" class="btn-signin" onclick="validateCondition()"
+                    <h2 class="title">회원가입</h2>
+                    <div class="tbl-box">
+                        <table class="tbl">
+                            <colgroup>
+                                <col width="100px" />
+                                <col />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <span>이메일</span>
+                                    </th>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            id="emailInput"
+                                            class="input input-box"
+                                            placeholder="예: customit@custom.com"
+                                            onchange="validateEmail()"
+                                        />
+                                        <button
+                                            id="emailCheckBtn"
+                                            class="btn btn-main-line"
+                                            onclick="checkEmailDuplicate()"
+                                        >
+                                            중복확인
+                                        </button>
+                                        <p id="emailCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <span>비밀번호</span>
+                                    </th>
+                                    <td>
+                                        <input
+                                            type="password"
+                                            id="passwordInput"
+                                            class="input input-box"
+                                            placeholder="비밀번호를 입력해주세요"
+                                            onchange="validatePassword()"
+                                        />
+                                        <p id="passwordCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">비밀번호 확인</th>
+                                    <td>
+                                        <input
+                                            type="password"
+                                            id="passwordInputConfirm"
+                                            class="input input-box"
+                                            placeholder="비밀번호를 한번 더 입력해주세요"
+                                            onchange="validatePasswordConfirm()"
+                                        />
+                                        <p id="pwConfirmCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">이름</th>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            id="nameInput"
+                                            class="input input-box"
+                                            placeholder="이름은 2~4글자로 입력해주세요."
+                                            onchange="validateName()"
+                                        />
+                                        <p id="nameCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">휴대폰</th>
+                                    <td>
+                                        <input
+                                            type="tel"
+                                            id="phoneNumInput"
+                                            class="input input-box"
+                                            placeholder="'-' 없이 번호만 입력해주세요"
+                                            onchange="validatePhoneNum()"
+                                            maxlength="13"
+                                        />
+                                        <p id="phoneNumCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">주소</th>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            id="addressInput"
+                                            class="input input-box"
+                                            placeholder="우측 주소 검색을 클릭해주세요"
+                                            readonly
+                                        />
+                                        <button
+                                            id="addressCheckBtn"
+                                            class="btn btn-main-line"
+                                            onclick="openKakaoMap()"
+                                        >
+                                            주소검색
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">상세주소</th>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            id="detailAddress"
+                                            class="input input-box"
+                                            placeholder="상세주소를 입력해주세요"
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tbl-btn-box">
+                        <a
+                            href="#"
+                            id="btn-signin"
+                            class="btn btn-main"
+                            onclick="validateCondition()"
                             >회원가입</a
                         >
-                        <div class="login">
-                            이미 아이디가 있으신가요?
-                            <div>
-                                <a href="/users/login"> 로그인</a>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="login-page">
+                        이미 아이디가 있으신가요?
+                        <a href="/users/login" class="btn"> 로그인 &gt;</a>
                     </div>
                 </div>
             </div>

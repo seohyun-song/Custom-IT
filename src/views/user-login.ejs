@@ -1,37 +1,55 @@
 <!doctype html>
 <html lang="ko">
     <head>
-        <%- include('../views/partials/head.ejs'); %>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css"
+        />
+        <link rel="stylesheet" href="/css/common.css" />
         <link rel="stylesheet" href="/css/user-login.css" />
+
+        <title>로그인</title>
     </head>
     <body class="container">
         <main role="main" class="contents">
             <div class="login-wrap">
-                <div class="header-logo">
+                <h1 class="header-logo">
                     <a href="/">
-                        <img src="/image/customit-big-logo.png" alt="custom-it-logo" />
+                        <img src="/image/customit-big-logo.png" alt="customIT 로고" />
                     </a>
-                </div>
+                </h1>
                 <form method="post" action="/users/login" class="login-form" id="loginForm">
                     <div class="login-box">
-                        <input type="text" id="email" name="email" placeholder="Email" />
                         <input
+                            type="text"
+                            id="email"
+                            class="input"
+                            name="email"
+                            placeholder="Email"
+                        />
+                        <input
+                            class="input"
                             type="password"
                             id="password"
                             name="password"
                             placeholder="Password"
                         />
                     </div>
-                    <button class="btn-login">
-                        <span>LOGIN</span>
-                    </button>
-                    <div class="btn-join">
-                        <a href="/users/join"> JOIN </a>
+                    <div class="btn-box">
+                        <button class="btn-login">
+                            <span>LOGIN</span>
+                        </button>
+                        <a href="/users/join" class="btn btn-join"> JOIN </a>
                     </div>
                 </form>
-                <a href="/admin/login" class="admin-page">
-                    <p>관리자이신가요&#63; 어드민 페이지로 이동 &gt;</p>
-                </a>
+                <div class="admin-page">
+                    관리자이신가요?
+                    <a href="/admin/login" class="btn"> 어드민 페이지로 이동 &gt; </a>
+                </div>
             </div>
         </main>
         <script>
