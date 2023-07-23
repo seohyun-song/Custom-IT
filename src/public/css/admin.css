@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: #dbdbdb;
     margin: 0;
 }
@@ -18,7 +18,7 @@ h2 {
 section {
     background-color: white;
     border-radius: 3px;
-    padding:30px;
+    padding: 30px;
 }
 
 .btn {
@@ -26,10 +26,10 @@ section {
 }
 
 .btn-small {
-    background-color:gray;
+    background-color: gray;
     padding: 5px 20px 5px 20px;
     border: 1px solid gray;
-    color:white;
+    color: white;
 }
 
 .btn-large {
@@ -37,6 +37,5 @@ section {
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 2px;
-    color:white;
-}
-
+    color: white;
+} */

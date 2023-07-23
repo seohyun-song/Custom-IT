@@ -1,0 +1,80 @@
+html,
+body {
+    height: 100%;
+}
+
+.dashboard {
+    height: 100%;
+}
+/* 
+    aside
+*/
+.aside {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    padding: 20px 20px 84px;
+    border-right: 1px solid #333;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.aside .admin-logo {
+    width: 200px;
+}
+
+.aside .admin-logo img {
+    width: 100%;
+}
+
+.aside .nav {
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #e6e6e6;
+}
+
+.aside .nav > .nav-li > .btn {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.aside .nav > .nav-li > .btn:hover {
+    font-weight: bold;
+}
+
+.logout {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+}
+
+.logout .btn {
+    width: 100%;
+}
+
+/*
+    article
+*/
+.article {
+    overflow: scroll;
+    height: 100%;
+    padding: 40px 40px 40px 340px;
+    box-sizing: border-box;
+    background-color: #f3f3f3;
+}
+.article .title-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.article .title {
+    font-size: 24px;
+}

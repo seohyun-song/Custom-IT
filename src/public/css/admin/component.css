@@ -44,6 +44,12 @@
     cursor: pointer;
 }
 
+.btn.btn-main.sm,
+.btn.btn-main-line.sm {
+    min-width: 60px;
+    padding: 0 4px;
+}
+
 /* 메인버튼 */
 .btn-main {
     display: inline-flex;
@@ -121,6 +127,21 @@ td {
 .tbl-box {
     border-top: 1px solid #535470;
     border-bottom: 1px solid #f2f2f4;
+}
+
+.tbl > thead > tr > th {
+    vertical-align: middle;
+    height: 56px;
+    padding: 5px 10px 5px 16px;
+    border-bottom: 1px solid #535470;
+    text-align: left;
+    font-size: 13px;
+    color: #535470;
+    font-weight: bold;
+    line-height: 16px;
+    font-weight: normal;
+    background-color: #fff;
+    word-break: keep-all;
 }
 
 .tbl > tbody > tr > th {

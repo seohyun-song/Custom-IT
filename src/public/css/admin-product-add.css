@@ -1,32 +1,3 @@
-.product {
-    /**admin-aside 내부 class**/
-    font-weight: bold;
-    font-size: larger;
-}
-
-section {
-    display: flex;
-    justify-content: center;
-}
-
-table {
-    width: 500px;
-    margin-top: 10px;
-    border-top: 1px solid #353535;
-    border-collapse: collapse;
-    color: #353535;
-}
-
-td {
-    padding: 10px;
-    border-bottom: 1px solid #bbbbbb;
-    vertical-align: middle;
-}
-
-td input {
-    width: 70%;
-}
-
 .image-box {
     overflow: hidden;
     position: relative;
@@ -61,7 +32,7 @@ td input {
 .check {
     font-size: smaller;
     margin-top: 3px;
-    color: #A586F6;
+    color: #a586f6;
 }
 
 select {
