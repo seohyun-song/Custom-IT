@@ -3,125 +3,139 @@
     <div class="wrap">
         <head>
             <%- include('../views/partials/admin-head.ejs'); %>
-            <link rel="stylesheet" href="/css/admin-product-add.css" />
+            <link rel="stylesheet" href="/css/admin/admin-product-add.css" />
+
+            <title>관리자 - 주문수정</title>
         </head>
         <body>
             <div class="dashboard">
                 <%- include('../views/partials/admin-aside.ejs'); %>
                 <article class="article">
-                    <h2>상품 수정</h2>
-                    <section>
+                    <div class="title-box">
+                        <h2 class="title">상품 수정</h2>
+                    </div>
+                    <section class="product-add-wrap">
                         <form
                             action="/api/product/<%= product.id %>"
                             enctype="multipart/form-data"
                             method="post"
                         >
-                            <table>
-                                <tr>
-                                    <div class="image-box">
-                                        <img
-                                            class="user-image"
-                                            id="userImage"
-                                            src="/image/<%=product.image%>"
-                                        />
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <td>상품명</td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            class="input"
-                                            id="inputName"
-                                            name="name"
-                                            value="<%=product.name%>"
-                                            required
-                                        />
-                                        <p class="check" id="checkName"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>가격</td>
-                                    <td>
-                                        <input
-                                            type="number"
-                                            class="input"
-                                            id="inputPrice"
-                                            name="price"
-                                            value="<%=product.price%>"
-                                            required
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>설명</td>
-                                    <td>
-                                        <textarea
-                                            class="inputDescription input"
-                                            id="inputDescription"
-                                            name="description"
-                                            required
-                                        >
-<%=product.description%></textarea
-                                        >
-                                        <p class="check" id="checkDescription"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>제조사</td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            class="input"
-                                            id="inputCompany"
-                                            name="company"
-                                            value="<%=product.company%>"
-                                        />
-                                        <p class="check" id="checkCompany"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>카테고리</td>
-                                    <td>
-                                        <select class="input" name="categoryName" required>
-                                            <% categories.forEach(category =>{ %>
-                                        <option id="optionCategory" value="<%= category.name %>" 
-                                            <% if (category.name === product.categoryName) { %> selected <% } %>>
-                                            <%= category.name %>
-                                            </option>
-                                            <% }) %>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>이미지</td>
-                                    <td>
-                                        <span id="imageName"><%=product.image%></span>
-                                        <input
-                                            type="file"
-                                            class="add-image"
-                                            id="addImage"
-                                            name="productImage"
-                                            accept="image/*"
-                                        />
-                                        <label
-                                            for="addImage"
-                                            class="add-image-label"
-                                            id="addImageLabel"
-                                            >찾기</label
-                                        >
-                                    </td>
-                                </tr>
+                        <div class="image-box">
+                            <img
+                                class="user-image"
+                                id="userImage"
+                                src="/image/<%=product.image%>"
+                            />
+                        </div>
+                        <div class="tbl-box">
+                            <table class="tbl">
+                                <colgroup>
+                                    <col width="120px" />
+                                    <col />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">상품명</th>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                class="input input-box"
+                                                id="inputName"
+                                                name="name"
+                                                value="<%=product.name%>"
+                                                required
+                                            />
+                                            <p class="check" id="checkName"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">가격</th>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                class="input input-box"
+                                                id="inputPrice"
+                                                name="price"
+                                                value="<%=product.price%>"
+                                                required
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설명</th>
+                                        <td>
+                                            <textarea
+                                                class="textarea"
+                                                id="inputDescription"
+                                                name="description"
+                                                required
+                                            >
+    <%=product.description%></textarea
+                                            >
+                                            <p class="check" id="checkDescription"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">제조사</th>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                class="input input-box"
+                                                id="inputCompany"
+                                                name="company"
+                                                value="<%=product.company%>"
+                                            />
+                                            <p class="check" id="checkCompany"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">카테고리</th>
+                                        <td>
+                                            <select class="select" name="categoryName" required>
+                                                <% categories.forEach(category =>{ %>
+                                            <option id="optionCategory" value="<%= category.name %>" 
+                                                <% if (category.name === product.categoryName) { %> selected <% } %>>
+                                                <%= category.name %>
+                                                </option>
+                                                <% }) %>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">이미지</th>
+                                        <td>
+                                            <div class="input-file-box">
+                                                <span id="imageName" class="name"><%=product.image%></span>
+                                                <input
+                                                    type="file"
+                                                    class="input"
+                                                    id="addImage"
+                                                    name="productImage"
+                                                    accept="image/*"
+                                                />
+                                                <label
+                                                    for="addImage"
+                                                    class="btn btn-main sm"
+                                                    id="addImageLabel"
+                                                    >찾기</label
+                                                >
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                
                             </table>
-                            <div class="btn-box">
-                            <input type="submit" class="btn-large submit" value="수정 완료" />
-                            <a
+
+                        </div>
+                            <div class="tbl-btn-box">
+                                <a
                                 href="/admin/product"
-                                class="btn-large btn-delete"
+                                class="btn btn-main-line"
                                 id="deleteProduct"
                                 data-id="<%=product.id %>"
                                 >삭제</a
-                            >
+                                >
+                                <input type="submit" class="btn btn-main" value="수정 완료" />
                             </div>
                         </form>
                     </section>
