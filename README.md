@@ -54,7 +54,7 @@ master -----dev
 | 최형욱 | Front-End | 회원가입, 어드민 회원가입 개인정보 조회, 수정, 탈퇴 화면 구현 |
 
 ## 사용 기술 스택
-- 프론트엔드: <img alt="Html" src ="https://img.shields.io/badge/HTML5-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/> <img alt="Css" src ="https://img.shields.io/badge/CSS3-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/> <img alt="JavaScript" src ="https://img.shields.io/badge/JavaScriipt-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=black"/> 
+- 프론트엔드: <img alt="EJS" src ="https://img.shields.io/badge/EJS-E34F26.svg?&style=for-the-badge&logo=EJS&logoColor=white"/> <img alt="Css" src ="https://img.shields.io/badge/CSS3-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/> <img alt="JavaScript" src ="https://img.shields.io/badge/JavaScriipt-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=black"/> 
 - 백엔드: <img alt="Node.js" src ="https://img.shields.io/badge/Node.js-3776AB.svg?&style=for-the-badge&logo=Node.js&logoColor=white"/> <img alt="Express.js" src ="https://img.shields.io/badge/Express.js-000000.svg?&style=for-the-badge&logo=Express.js&logoColor=black"/> <img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-02569B.svg?&style=for-the-badge&logo=MongoDB&logoColor=white"/> 
 - 배포: <img alt="PM2" src ="https://img.shields.io/badge/PM2-302683.svg?&style=for-the-badge&logo=PM2&logoColor=white"/> <img alt="NGINX" src ="https://img.shields.io/badge/NGINX-009639.svg?&style=for-the-badge&logo=NGINX&logoColor=white"/>
 
