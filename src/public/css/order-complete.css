@@ -20,24 +20,3 @@
 .complete-message {
     margin-bottom: 40px;
 }
-
-.btn-main {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 46px;
-    padding: 0 16px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    background-color: #a586f6;
-    font-size: 18px;
-    color: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-main:hover {
-    background-color: #9b7ce9;
-}

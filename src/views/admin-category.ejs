@@ -24,7 +24,7 @@
                                 oninput="validateCategory(event)"
                                 readonly="readonly"
                             />
-                            <p class="checkCategory" id="checkCategory"></p>
+                            <p class="check-category" id="checkCategory"></p>
 
                             <div class="btn-box">
                                 <button
@@ -46,7 +46,7 @@
                                     삭제
                                 </button>
                                 <button
-                                    class="btn btn-main sm addNewCategory"
+                                    class="btn btn-main sm btn-add-newcategory"
                                     id="addNewCategory"
                                     data-id="<%=
                                 category.id %>"
@@ -94,16 +94,15 @@
                 $listCategory.insertAdjacentHTML(
                     'beforeend',
                     `   <li class="list-category-li">
-                            <div>
-                            <input type="text" value=${name} oninput="validateCategory(event)" readonly="readonly">
-                            <p class="checkCategory" id="checkCategory"></p>
-                            </div>
+                            <input type="text" class="input input-box" value=${name} oninput="validateCategory(event)" readonly="readonly">
+                            <p class="check-category" id="checkCategory"></p>
+                           
                             <div class="btn-box">
-                                <button class="btn btn-small" id="updateCategory" data-id="${data.id}" 
+                                <button class="btn btn-main sm" id="updateCategory" data-id="${data.id}" 
                                 onclick="updateCategory(event)"> 수정 </button>
-                                <button class="btn btn-small" id="deleteCategory" data-id="${data.id}" 
+                                <button class="btn btn-main sm" id="deleteCategory" data-id="${data.id}" 
                                 onclick="deleteCategory(event); window.location.reload();"> 삭제 </button>
-                                <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="${data.id}" 
+                                <button class="btn btn-main sm btn-add-newcategory" id="addNewCategory" data-id="${data.id}" 
                                 onclick="addNewCategory(event); window.location.reload();"> 수정 완료 </button>
                             </div>
                         </li>`,

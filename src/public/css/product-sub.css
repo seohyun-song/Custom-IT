@@ -41,10 +41,11 @@
     position: absolute;
     right: 10px;
     bottom: 10px;
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: #a586f6 url('../image/icon-cart-white.png') no-repeat center / 16px;
+    background: url('../image/icon-cart-white.png') no-repeat center / 16px;
+    background-color: rgb(165, 134, 246, 0.8);
 }
 
 .product-list .product .product-info {

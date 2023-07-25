@@ -20,11 +20,11 @@
     background-color: #eee;
 }
 
-.addNewCategory {
+.btn-add-newcategory {
     display: none;
 }
 
-.checkCategory {
+.check-category {
     margin-top: 3px;
     margin-left: 10px;
     font-size: smaller;

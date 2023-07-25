@@ -1,4 +1,11 @@
 /*
+    container
+*/
+.container {
+    min-width: 1280px;
+}
+
+/*
     header
 */
 .header {
