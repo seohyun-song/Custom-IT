@@ -1,85 +1,105 @@
 <!doctype html>
 <html lang="ko">
     <head>
-        <%- include('../views/partials/head'); %>
-        <link rel="stylesheet" href="/css/admin-signin.css" />
-        <link rel="stylesheet" href="/css/footer.css" />
-    </head>
+        <%- include('../views/partials/admin-head.ejs'); %>
+        <link rel="stylesheet" href="/css/admin/admin-signin.css" />
 
+        <title>관리자 회원가입</title>
+    </head>
     <body class="container">
-        <header class="header"></header>
         <main role="main" class="contents">
             <div class="contents-inner">
                 <div class="admin-signin-wrap">
-                    <div class="admin-signin-text">회원가입</div>
-                    <section class="top">
-                        <div class="email">
-                            <label>이메일</label>
-                            <input
-                                type="text"
-                                id="emailInput"
-                                placeholder="공유된 형식으로 작성해주세요"
-                                onchange="validateEmail()"
-                            />
-                            <div class="email-check" id="emailCheckBtn">
-                                <button href="#" onclick="checkEmailDuplicate()">중복확인</button>
-                            </div>
-                        </div>
-                        <p id="emailCheck"></p>
-                        <div class="password">
-                            <label>비밀번호</label>
-                            <input
-                                type="password"
-                                id="passwordInput"
-                                placeholder="비밀번호를 입력해주세요"
-                                onchange="validatePassword()"
-                            />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <p id="passwordCheck"></p>
-                        <div class="password-confirm">
-                            <label>비밀번호확인</label>
-                            <input
-                                type="password"
-                                id="passwordInputConfirm"
-                                placeholder="비밀번호를 한번 더 입력해주세요"
-                                onchange="validatePasswordConfirm()"
-                            />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <p id="pwConfirmCheck"></p>
-                        <div class="name">
-                            <label>이름</label>
-                            <input
-                                type="text"
-                                id="nameInput"
-                                placeholder="이름은 2~4글자로 입력해주세요"
-                                onchange="validateName()"
-                            />
-                            <span><a href="#">중복확인</a></span>
-                        </div>
-                        <p id="nameCheck"></p>
-                    </section>
-                    <div class="bottom-wrap">
+                    <h2 class="title">회원가입</h2>
+                    <div class="tbl-box">
+                        <table class="tbl">
+                            <colgroup>
+                                <col width="100px" />
+                                <col />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <span>이메일</span>
+                                    </th>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            id="emailInput"
+                                            class="input input-box"
+                                            placeholder="공유된 형식으로 작성해주세요"
+                                            onchange="validateEmail()"
+                                        />
+                                        <button
+                                            id="emailCheckBtn"
+                                            class="btn btn-main-line"
+                                            onclick="checkEmailDuplicate()"
+                                        >
+                                            중복확인
+                                        </button>
+                                        <p id="emailCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <span>비밀번호</span>
+                                    </th>
+                                    <td>
+                                        <input
+                                            type="password"
+                                            id="passwordInput"
+                                            class="input input-box"
+                                            placeholder="비밀번호를 입력해주세요"
+                                            onchange="validatePassword()"
+                                        />
+                                        <p id="passwordCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">비밀번호 확인</th>
+                                    <td>
+                                        <input
+                                            type="password"
+                                            id="passwordInputConfirm"
+                                            class="input input-box"
+                                            placeholder="비밀번호를 한번 더 입력해주세요"
+                                            onchange="validatePasswordConfirm()"
+                                        />
+                                        <p id="pwConfirmCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">이름</th>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            id="nameInput"
+                                            class="input input-box"
+                                            placeholder="이름은 2~4글자로 입력해주세요"
+                                            onchange="validateName()"
+                                        />
+                                        <p id="nameCheck" class="msg"></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tbl-btn-box">
                         <a
                             href="#"
-                            class="btn-admin-signin"
+                            class="btn btn-main"
                             id="btn-signin"
                             onclick="validateCondition()"
                             >관리자 회원가입</a
                         >
-
-                        <div class="login">
-                            이미 아이디가 있으신가요?
-                            <div>
-                                <a href="/admin/login"> 로그인</a>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="login-page">
+                        이미 아이디가 있으신가요?
+                        <a href="/admin/login" class="btn"> 로그인 &gt;</a>
                     </div>
                 </div>
             </div>
         </main>
-        <footer class="footer"><%- include('../views/partials/footer'); %></footer>
         <script>
             // 이메일 유효성 검사
             async function validateEmail() {
@@ -244,8 +264,7 @@
                         window.location.href = res.url;
                     } else {
                     }
-                } catch (error) {
-                }
+                } catch (error) {}
             }
         </script>
     </body>

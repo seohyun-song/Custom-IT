@@ -1,33 +1,41 @@
 <!doctype html>
 <html lang="ko">
     <head>
-        <%- include('../views/partials/head.ejs'); %>
-        <link rel="stylesheet" href="/css/admin-login.css" />
-        <link rel="stylesheet" href="/css/layout.css" />
+        <%- include('../views/partials/admin-head.ejs'); %>
+        <link rel="stylesheet" href="/css/admin/admin-login.css" />
+
+        <title>관리자 - 로그인</title>
     </head>
     <body class="container">
-        <main class="contents-inner">
+        <main role="main" class="contents">
             <div class="login-wrap">
-                <div class="header-logo">
-                    <img src="/image/admin-logo.png" alt="admin-logo" />
-                </div>
+                <h1 class="header-logo">
+                    <a href="#">
+                        <img src="/image/admin-logo.png" alt="customIT 관리자 로고" />
+                    </a>
+                </h1>
                 <form method="post" action="/admin/login" class="login-form" id="loginForm">
                     <div class="login-box">
-                        <input type="text" name="email" id="email" placeholder="이메일" />
+                        <input
+                            type="text"
+                            name="email"
+                            id="email"
+                            class="input"
+                            placeholder="이메일"
+                        />
                         <input
                             type="password"
                             name="password"
                             id="password"
+                            class="input"
                             placeholder="패스워드"
                         />
                     </div>
-                    <a href="/admin/category">
+                    <div class="btn-box">
                         <button class="btn-login">
                             <span>LOGIN</span>
                         </button>
-                    </a>
-                    <div class="btn-join">
-                        <a href="/admin/join"> JOIN </a>
+                        <a href="/admin/join" class="btn-join"> JOIN </a>
                     </div>
                 </form>
             </div>

@@ -1,44 +1,4 @@
-.btn-main {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 46px;
-    padding: 0 16px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    background-color: #a586f6;
-    font-size: 18px;
-    color: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-main:hover {
-    background-color: #9b7ce9;
-}
-
-.btn-main-line {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 46px;
-    padding: 0 16px;
-    border: 1px solid #a586f6;
-    border-radius: 6px;
-    font-size: 18px;
-    color: #a586f6;
-    background-color: #fff;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-main-line:hover {
-    background-color: #f6f3ff;
-}
-
+/* 상품 상세 페이지 */
 .product-info {
     display: flex;
     gap: 60px;

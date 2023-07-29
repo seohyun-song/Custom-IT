@@ -1,9 +1,4 @@
-.category { 
-    /**admin-aside 내부 class**/
-    font-weight: bold;
-    font-size: larger;
-}
-
+/* 관리자 - 카테고리관리 */
 .list-category {
     border-top: 1px solid #adadad;
 }
@@ -22,22 +17,18 @@
     padding: 10px 30px;
     margin-top: 30px;
     border-radius: 6px;
-    background-color: #e6e6e6;
+    background-color: #eee;
 }
 
-.addNewCategory {
+.btn-add-newcategory {
     display: none;
 }
 
-.checkCategory {
+.check-category {
     margin-top: 3px;
     margin-left: 10px;
     font-size: smaller;
     color: #ff1823;
-}
-
-.btn:hover {
-    background-color: #353535;
 }
 
 .btn-box {

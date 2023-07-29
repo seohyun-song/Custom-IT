@@ -2,9 +2,6 @@
 <html lang="ko">
     <head>
         <%- include('../views/partials/head'); %>
-        <link rel="stylesheet" href="/css/header.css" />
-        <link rel="stylesheet" href="/css/footer.css" />
-        <link rel="stylesheet" href="/css/layout.css" />
         <link rel="stylesheet" href="/css/product-detail.css" />
     </head>
 
@@ -17,7 +14,7 @@
             <div class="contents-inner">
                 <section class="product-info">
                     <div class="image-box">
-                        <img src="/image/<%= product.image %>" alt="상품 썸네일" />
+                        <img src="/image/<%= product.image %>" alt="<%= product.name %>" />
                         <input type="hidden" id="image" value="<%= product.image %>" />
                     </div>
                     <div class="info-box">
