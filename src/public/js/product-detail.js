@@ -1,18 +1,11 @@
 import * as cartLocalStorage from './common/cart-localstorage.js';
 
-const $productList = document.querySelector('#productList');
+const $btnCart = document.querySelector('#btnCart');
 
-const addProductToCart = (event) => {
-    if (!event.target.matches('.btn-add-cart')) return;
-    event.preventDefault();
-    event.stopPropagation();
-
-    const $product = event.target.closest('.product');
-    const productName = $product.querySelector('.product-info .name').textContent;
-    const price = Number(
-        $product.querySelector('.product-info .price').textContent.replace(/,/g, ''),
-    );
-    const image = $product.querySelector('.product-img img').getAttribute('src');
+const addProductToCart = () => {
+    const productName = document.querySelector('#name').textContent;
+    const price = Number(document.querySelector('#price').textContent.replace(/,/g, ''));
+    const image = document.querySelector('#image').getAttribute('src');
     const quantity = 1;
 
     const cart = cartLocalStorage.get('cart');
@@ -43,4 +36,4 @@ const addProductToCart = (event) => {
     alert(`장바구니에 ${productName} 상품을 한 개 담았습니다.`);
 };
 
-$productList.addEventListener('click', addProductToCart);
+$btnCart.addEventListener('click', addProductToCart);
