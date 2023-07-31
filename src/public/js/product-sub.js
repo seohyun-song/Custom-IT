@@ -1,23 +1,11 @@
-function getItemByLocalStorage(item) {
-    const data = localStorage.getItem(item);
-    if (!data) {
-        return [];
-    }
-    return JSON.parse(data);
-}
-
-function setItemToLocalStorage(arr) {
-    localStorage.setItem('cart', JSON.stringify(arr));
-    alert('장바구니에 상품을 담았습니다.');
-}
+import * as cartLocalStorage from './common/cart-localstorage.js';
 
 const $productList = document.querySelector('#productList');
 
 const addProductToCart = (event) => {
+    if (!event.target.matches('.btn-add-cart')) return;
     event.preventDefault();
     event.stopPropagation();
-
-    if (!event.target.matches('.btn-add-cart')) return;
 
     const $product = event.target.closest('.product');
     const productName = $product.querySelector('.product-info .name').textContent;
@@ -27,7 +15,7 @@ const addProductToCart = (event) => {
     const image = $product.querySelector('.product-img img').getAttribute('src');
     const quantity = 1;
 
-    const cart = getItemByLocalStorage('cart');
+    const cart = cartLocalStorage.get('cart');
     const data = {
         productName,
         price,
@@ -44,13 +32,15 @@ const addProductToCart = (event) => {
         for (let i = 0; i < arr.length; i += 1) {
             if (arr[i].productName === productName) {
                 arr[i].quantity += 1;
-                setItemToLocalStorage(arr);
+                cartLocalStorage.set(arr);
+                alert('장바구니에 상품을 담았습니다.');
                 return;
             }
         }
         arr.push(data);
     }
-    setItemToLocalStorage(arr);
+    cartLocalStorage.set(arr);
+    alert('장바구니에 상품을 담았습니다.');
 };
 
 $productList.addEventListener('click', addProductToCart);
