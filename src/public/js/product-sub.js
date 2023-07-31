@@ -33,14 +33,14 @@ const addProductToCart = (event) => {
             if (arr[i].productName === productName) {
                 arr[i].quantity += 1;
                 cartLocalStorage.set(arr);
-                alert('장바구니에 상품을 담았습니다.');
+                alert(`장바구니에 ${productName} 상품을 한 개 담았습니다.`);
                 return;
             }
         }
         arr.push(data);
     }
     cartLocalStorage.set(arr);
-    alert('장바구니에 상품을 담았습니다.');
+    alert(`장바구니에 ${productName} 상품을 한 개 담았습니다.`);
 };
 
 $productList.addEventListener('click', addProductToCart);
