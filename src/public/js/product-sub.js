@@ -34,7 +34,7 @@ const addProductToCart = (event) => {
                 arr[i].quantity += 1;
                 cartLocalStorage.set(arr);
                 alert(`장바구니에 ${productName} 상품을 한 개 담았습니다.`);
-                return;
+                break;
             }
         }
         arr.push(data);
