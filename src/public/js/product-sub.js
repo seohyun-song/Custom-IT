@@ -5,7 +5,6 @@ const $productList = document.querySelector('#productList');
 const addProductToCart = (event) => {
     if (!event.target.matches('.btn-add-cart')) return;
     event.preventDefault();
-    event.stopPropagation();
 
     const $product = event.target.closest('.product');
     const productName = $product.querySelector('.product-info .name').textContent;
