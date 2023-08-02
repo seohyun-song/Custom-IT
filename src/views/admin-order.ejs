@@ -4,6 +4,8 @@
         <head>
             <%- include('../views/partials/admin-head.ejs'); %>
             <link rel="stylesheet" href="/css/admin/admin-order.css" />
+
+            <script type="module" src="/js/admin/admin-order.js"></script>
         </head>
         <body>
             <div class="dashboard">
@@ -22,7 +24,7 @@
                                     <th>준비/배송 상태</th>
                                     <th>관리</th>
                                 </thead>
-                                <tbody>
+                                <tbody id="orderList">
                                     <% orders.forEach(function(order){%>
                                     <tr>
                                         <td><%= order.createdAt%></td>
@@ -30,10 +32,8 @@
                                         <td><%= order.totalPrice%></td>
                                         <td>
                                             <select
-                                                id="deliveryStatus"
-                                                class="select sm"
+                                                class="select sm select-delivery"
                                                 data-id="<%= order.orderId %>"
-                                                onchange="updateDeliveryStatus(event)"
                                             >
                                                 <% const Status=['상품준비중', '배송준비중',
                                                 '배송중', '배송완료']; %> <% Status.forEach( e =>{
@@ -46,8 +46,7 @@
                                         </td>
                                         <td>
                                             <button
-                                                class="btn btn-main-line sm"
-                                                onclick="deleteOrder(event); window.location.reload();"
+                                                class="btn btn-main-line sm btn-delete-order"
                                                 data-id="<%=order.orderId %>"
                                             >
                                                 주문 취소
@@ -61,33 +60,6 @@
                     </section>
                 </article>
             </div>
-            <script>
-                const $deliveryStatus = document.querySelector('#deliveryStatus');
-
-                async function updateDeliveryStatus(event) {
-                    const orderId = event.target.getAttribute('data-id');
-                    const deliveryStatus = event.target.value;
-                    const res = await fetch(`/api/orders/${orderId}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ orderId, deliveryStatus }),
-                    });
-
-                    if (res.status === 201) {
-                        alert('배송 상태가 변경되었습니다.');
-                    } else {
-                        alert('배송 상태 변경에 실패하였습니다.');
-                    }
-                }
-                async function deleteOrder(event) {
-                    const orderId = event.target.getAttribute('data-id');
-                    const res = await fetch(`/api/orders/${orderId}`, {
-                        method: 'DELETE',
-                    });
-                }
-            </script>
         </body>
     </div>
 </html>

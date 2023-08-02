@@ -3,6 +3,8 @@
     <head>
         <%- include('../views/partials/head'); %>
 
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
+        <script type="module" src="/js/edit-user-info.js"></script>
         <title>마이페이지 - 개인정보수정</title>
     </head>
 
@@ -72,7 +74,6 @@
                                                     type="text"
                                                     id="nameInput"
                                                     value="<%= userInfo.name %>"
-                                                    onchange="validateName()"
                                                     readonly
                                                 />
                                                 <p id="nameCheck"></p>
@@ -89,7 +90,6 @@
                                                     id="phoneNumInput"
                                                     value="<%= userInfo.phoneNumber %>"
                                                     placeholder="'-' 없이 번호만 입력해주세요"
-                                                    onchange="validatePhoneNum()"
                                                     maxlength="13"
                                                 />
                                                 <p id="phoneNumCheck"></p>
@@ -111,7 +111,6 @@
                                                 <button
                                                     id="addressCheckBtn"
                                                     class="btn btn-main-line"
-                                                    onclick="openKakaoMap()"
                                                 >
                                                     주소검색
                                                 </button>
@@ -140,13 +139,7 @@
                                     class="btn btn-main-line"
                                     >취소하기</a
                                 >
-                                <button
-                                    id="editUserInfo"
-                                    class="btn btn-main"
-                                    onclick="editUserInfoChange()"
-                                >
-                                    회원정보수정
-                                </button>
+                                <button id="editUserInfo" class="btn btn-main">회원정보수정</button>
                             </div>
                         </div>
                     </section>
@@ -155,86 +148,5 @@
         </main>
 
         <footer class="footer"><%- include('../views/partials/footer'); %></footer>
-
-        <script>
-            // 휴대폰 번호 유효성 검사
-            function validatePhoneNum() {
-                const $phoneNumInput = document.querySelector('#phoneNumInput');
-                const $phoneNumCheck = document.querySelector('#phoneNumCheck');
-                const $phoneNumRegex = /^[0-9]+$/; //숫자로만 입력 가능
-
-                if ($phoneNumInput.value.match($phoneNumRegex)) {
-                    $phoneNumCheck.style.fontSize = '12px';
-                    $phoneNumCheck.textContent = '올바른 휴대폰 번호입니다.';
-                    $phoneNumCheck.style.color = 'blue';
-                    return true;
-                } else {
-                    $phoneNumCheck.style.fontSize = '12px';
-                    $phoneNumCheck.textContent = '휴대폰 번호는 숫자로 입력해주세요.';
-                    $phoneNumCheck.style.color = 'red';
-                    return false;
-                }
-            }
-
-            // 개인정보 수정 조건 검사
-            function validateCondition() {
-                const isPhoneNumValid = validatePhoneNum();
-                if (isPhoneNumValid) {
-                    editUserInfoChange();
-                } else {
-                }
-            }
-
-            // 유저 정보 변경 요청
-            async function editUserInfoChange() {
-                const $emailInput = document.querySelector('#emailInput').value;
-                const $nameInput = document.querySelector('#nameInput').value;
-                const $phoneNumInput = document.querySelector('#phoneNumInput').value;
-                const $addressInput = document.querySelector('#addressInput').value;
-                const $detailAddressInput = document.querySelector('#detailAddress').value;
-
-                // 서버에 요청하여 수정된 정보를 받아옴
-                const updatedData = {
-                    email: $emailInput,
-                    name: $nameInput,
-                    phoneNumber: $phoneNumInput,
-                    address: {
-                        address1: $addressInput,
-                        address2: $detailAddressInput,
-                    },
-                };
-
-                try {
-                    // 서버에 수정된 정보 전송
-                    const res = await fetch('/api/users/info/edit', {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(updatedData),
-                    });
-
-                    if (res.ok) {
-                        // 성공적으로 수정되었을 경우 처리
-                        // 화면에 출력하는 로직 추가
-                        alert('개인정보 수정에 성공하였습니다');
-                        window.location.href = '/users/info'; // 수정 완료 후 이동할 페이지 URL
-                    } else {
-                    }
-                } catch (error) {}
-            }
-        </script>
-        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script>
-            function openKakaoMap() {
-                new daum.Postcode({
-                    oncomplete: function (data) {
-                        var $addressInput = document.querySelector('#addressInput');
-                        $addressInput.value = data.address;
-                        $addressInput.focus();
-                    },
-                }).open();
-            }
-        </script>
     </body>
 </html>
