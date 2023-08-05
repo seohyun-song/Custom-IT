@@ -16,8 +16,11 @@
             <div class="contents-inner">
                 <section class="product-info">
                     <div class="image-box">
-                        <img src="/image/<%= product.image %>" alt="<%= product.name %>" />
-                        <input type="hidden" id="image" value="<%= product.image %>" />
+                        <img
+                            id="image"
+                            src="/image/<%= product.image %>"
+                            alt="<%= product.name %>"
+                        />
                     </div>
                     <div class="info-box">
                         <div class="company"><%= product.company %></div>
