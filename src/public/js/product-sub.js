@@ -14,7 +14,7 @@ const addProductToCart = (event) => {
     const image = $product.querySelector('.product-img img').getAttribute('src');
     const quantity = 1;
 
-    const cart = cartLocalStorage.get('cart');
+    const cart = cartLocalStorage.get();
     const data = {
         productName,
         price,
