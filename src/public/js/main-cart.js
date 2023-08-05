@@ -1,6 +1,6 @@
 import * as cartLocalStorage from './common/cart-localstorage.js';
 
-let cart = cartLocalStorage.get('cart');
+let cart = cartLocalStorage.get();
 
 let totalPrice = 0;
 let totalQuantity = 0;
