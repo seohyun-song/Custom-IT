@@ -1,3 +1,5 @@
+import { validateRegExp } from './constants/regexp.js';
+
 // 회원가입 버튼 활성화 함수
 function enableSignUpButton() {
     const $signupButton = document.querySelector('#btn-signin');
@@ -10,9 +12,8 @@ const $emailInput = document.querySelector('#emailInput');
 async function validateEmail() {
     const $emailInput = document.querySelector('#emailInput');
     const $emailCheck = document.querySelector('#emailCheck');
-    const $emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if ($emailInput.value.match($emailRegex)) {
+    if ($emailInput.value.match(validateRegExp.email)) {
         $emailCheck.style.fontSize = '12px';
         $emailCheck.textContent = '올바른 이메일 형식입니다.';
         $emailCheck.style.color = 'blue';
@@ -76,9 +77,8 @@ const $passwordInput = document.querySelector('#passwordInput');
 function validatePassword() {
     const $passwordInput = document.querySelector('#passwordInput');
     const $passwordCheck = document.querySelector('#passwordCheck');
-    const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
 
-    if ($passwordInput.value.match($passwordRegex)) {
+    if ($passwordInput.value.match(validateRegExp.password)) {
         $passwordCheck.style.fontSize = '12px';
         $passwordCheck.textContent = '안전한 비밀번호입니다.';
         $passwordCheck.style.color = 'blue';
@@ -120,9 +120,8 @@ const $nameInput = document.querySelector('#nameInput');
 function validateName() {
     const $nameInput = document.querySelector('#nameInput');
     const $nameCheck = document.querySelector('#nameCheck');
-    const $nameRegex = /^[가-힣]{2,4}$/;
 
-    if ($nameInput.value.match($nameRegex)) {
+    if ($nameInput.value.match(validateRegExp.name)) {
         $nameCheck.textContent = '';
         return true;
     } else {
@@ -140,9 +139,8 @@ const $phoneNumInput = document.querySelector('#phoneNumInput');
 function validatePhoneNum() {
     const $phoneNumInput = document.querySelector('#phoneNumInput');
     const $phoneNumCheck = document.querySelector('#phoneNumCheck');
-    const $phoneNumRegex = /^[0-9]+$/;
 
-    if ($phoneNumInput.value.match($phoneNumRegex)) {
+    if ($phoneNumInput.value.match(validateRegExp.phoneNumber)) {
         $phoneNumCheck.style.fontSize = '12px';
         $phoneNumCheck.textContent = '올바른 휴대폰 번호입니다.';
         $phoneNumCheck.style.color = 'blue';

@@ -1,11 +1,12 @@
+import { validateRegExp } from './constants/regexp.js';
+
 // 비밀번호 유효성 검사
 const $passwordInput = document.querySelector('#passwordInput');
 async function validatePassword() {
     const $passwordInput = document.querySelector('#passwordInput');
     const $passwordCheck = document.querySelector('#passwordCheck');
-    const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
 
-    if ($passwordInput.value.match($passwordRegex)) {
+    if ($passwordInput.value.match(validateRegExp.password)) {
         $passwordCheck.style.fontSize = '12px';
         $passwordCheck.textContent = '';
         $passwordCheck.style.color = 'blue';
@@ -66,13 +67,12 @@ function enablePasswordUpButton() {
 }
 
 // 새 비밀번호
-const passwordInputConfirm$newPasswordInput = document.querySelector('#newPasswordInput');
+const $newPasswordInput = document.querySelector('#newPasswordInput');
 function validateNewPassword() {
     const $newPasswordInput = document.querySelector('#newPasswordInput');
     const $newPasswordCheck = document.querySelector('#newPasswordCheck');
-    const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
 
-    if ($newPasswordInput.value.match($passwordRegex)) {
+    if ($newPasswordInput.value.match(validateRegExp.password)) {
         $newPasswordCheck.style.fontSize = '12px';
         $newPasswordCheck.textContent = '안전한 비밀번호입니다.';
         $newPasswordCheck.style.color = 'blue';

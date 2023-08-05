@@ -1,11 +1,12 @@
+import { validateRegExp } from './constants/regexp.js';
+
 // 휴대폰 번호 유효성 검사
 const $phoneNumInput = document.querySelector('#phoneNumInput');
 function validatePhoneNum() {
     const $phoneNumInput = document.querySelector('#phoneNumInput');
     const $phoneNumCheck = document.querySelector('#phoneNumCheck');
-    const $phoneNumRegex = /^[0-9]+$/; //숫자로만 입력 가능
 
-    if ($phoneNumInput.value.match($phoneNumRegex)) {
+    if ($phoneNumInput.value.match(validateRegExp.phoneNumber)) {
         $phoneNumCheck.style.fontSize = '12px';
         $phoneNumCheck.textContent = '올바른 휴대폰 번호입니다.';
         $phoneNumCheck.style.color = 'blue';
