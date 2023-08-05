@@ -122,6 +122,23 @@
     background-color: #3c4449;
 }
 
+.header .btn-user,
+.header .btn-login,
+.header .btn-signin,
+.header .btn-logout {
+    display: none;
+}
+
+.header.login .btn-user,
+.header.login .btn-logout {
+    display: flex;
+}
+
+.header.logout .btn-login,
+.header.logout .btn-signin {
+    display: flex;
+}
+
 /*
     main
 */

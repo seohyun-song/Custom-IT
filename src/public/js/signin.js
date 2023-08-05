@@ -1,4 +1,5 @@
 import { validateRegExp } from './constants/regexp.js';
+import * as api from './common/api.js';
 
 // 회원가입 버튼 활성화 함수
 function enableSignUpButton() {
@@ -38,15 +39,11 @@ async function checkEmailDuplicate() {
     const $emailInput = document.querySelector('#emailInput');
     const $emailCheck = document.querySelector('#emailCheck');
     const email = $emailInput.value;
+    const apiUrl = '/api/users/join/emailDuplicate';
+    const data = { email };
 
     try {
-        const res = await fetch('/api/users/join/emailDuplicate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-        });
+        const res = api.post(apiUrl, data);
 
         if (res.ok) {
             const result = await res.json();
@@ -199,7 +196,7 @@ async function registerUser() {
     const $phoneNumInput = document.querySelector('#phoneNumInput').value;
     const $addressInput = document.querySelector('#addressInput').value;
     const $detailAddressInput = document.querySelector('#detailAddress').value;
-
+    const apiUrl = '/api/users/join';
     const userData = {
         email: $emailInput,
         password: $passwordInput,
@@ -217,13 +214,7 @@ async function registerUser() {
     }
 
     try {
-        const res = await fetch('/api/users/join', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        });
+        const res = await api.post(apiUrl, userData);
 
         if (res.ok) {
             window.location.href = res.url;

@@ -1,3 +1,5 @@
+import * as api from '../common/api.js';
+
 const $listCategory = document.querySelector('#listCategory');
 
 $listCategory.addEventListener('click', async (e) => {
@@ -19,22 +21,19 @@ $listCategory.addEventListener('click', async (e) => {
         const id = $target.getAttribute('data-id');
         const name = $target.closest('.list-category-li').querySelector('input').value;
         const categoryName = { name };
-        const res = await fetch(`/api/category/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(categoryName),
-        });
+        const apiUrl = `/api/category/${id}`;
+        const res = await api.put(apiUrl, categoryName);
         window.location.reload();
     }
     // 삭제
     if ($target.matches('.btn-delete')) {
+        console.log('hi');
+        const $list = $target.closest('.list-category-li');
+        console.log($list);
         const id = $target.getAttribute('data-id');
-        const res = await fetch(`/api/category/${id}`, {
-            method: 'DELETE',
-        });
-        history.go(0);
+        const apiUrl = `/api/category/${id}`;
+        const res = await api.del(apiUrl);
+        window.location.reload();
     }
 });
 
@@ -44,13 +43,8 @@ const $createCategory = document.querySelector('#createCategory');
 async function createCategory() {
     const name = $inputCategory.value;
     const categoryName = { name };
-    const res = await fetch('/api/category', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(categoryName),
-    });
+    const apiUrl = '/api/category';
+    const res = await api.post(apiUrl, categoryName);
     const data = await res.json();
     $listCategory.insertAdjacentHTML(
         'beforeend',

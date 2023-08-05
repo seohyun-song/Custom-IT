@@ -1,4 +1,5 @@
 import { validateRegExp } from '../constants/regexp.js';
+import * as api from '../common/api.js';
 
 // 이메일 유효성 검사
 const $emailInput = document.querySelector('#emailInput');
@@ -31,13 +32,9 @@ async function checkEmailDuplicate() {
     const email = $emailInput.value;
 
     try {
-        const res = await fetch('/api/admin/join/emailDuplicate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-        });
+        const apiUrl = '/api/admin/join/emailDuplicate';
+        const data = { email };
+        const res = await api.post(apiUrl, data);
 
         if (res.ok) {
             const result = await res.json();
@@ -160,13 +157,8 @@ async function registerAdmin() {
     }
 
     try {
-        const res = await fetch('/api/admin/join', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(adminData),
-        });
+        const apiUrl = '/api/admin/join';
+        const res = await api.post(apiUrl, adminData);
 
         if (res.ok) {
             window.location.href = res.url;

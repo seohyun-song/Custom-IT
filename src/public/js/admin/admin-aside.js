@@ -1,12 +1,9 @@
+import * as api from '../common/api.js';
+
 async function btnLogout(e) {
     e.preventDefault();
     const apiUrl = '/api/admin/logout';
-    const res = await fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    const res = await api.get(apiUrl);
     if (res.status === 200) {
         window.location.href = res.url;
     } else {

@@ -1,4 +1,5 @@
 import { validateRegExp } from './constants/regexp.js';
+import * as api from './common/api.js';
 
 // 비밀번호 유효성 검사
 const $passwordInput = document.querySelector('#passwordInput');
@@ -26,15 +27,11 @@ async function checkPasswordDuplicate() {
     const $passwordInput = document.querySelector('#passwordInput');
     const $passwordCheck = document.querySelector('#passwordCheck');
     const password = $passwordInput.value;
+    const apiUrl = '/api/users/info/edit/pwCheck';
+    const data = { password };
 
     try {
-        const res = await fetch('/api/users/info/edit/pwCheck', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ password }),
-        });
+        const res = await api.post(apiUrl, data);
 
         if (res.ok) {
             const result = await res.json();
@@ -135,6 +132,7 @@ async function changePassword() {
         password: $passwordInput,
         newPassword: $newPasswordInput,
     };
+    const apiUrl = '/api/users/info/edit/pw';
 
     const isDuplicate = await checkPasswordDuplicate();
     if (isDuplicate) {
@@ -142,13 +140,7 @@ async function changePassword() {
     }
 
     try {
-        const res = await fetch('/api/users/info/edit/pw', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        });
+        const res = await api.put(apiUrl, userData);
 
         if (res.ok) {
             window.location.href = '/users/info';

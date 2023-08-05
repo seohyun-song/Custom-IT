@@ -1,4 +1,5 @@
 import { validateRegExp } from './constants/regexp.js';
+import * as api from './common/api.js';
 
 const $inputEmail = document.querySelector('#email');
 const $inputPw = document.querySelector('#password');
@@ -23,15 +24,8 @@ async function login(e) {
         return alert('비밀번호를 입력하지 않았습니다.');
     }
 
-    const jsonData = JSON.stringify(data);
     const apiUrl = '/api/users/login';
-    const res = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: jsonData,
-    });
+    const res = await api.post(apiUrl, data);
 
     if (res.status === 200) {
         window.location.href = res.url;
