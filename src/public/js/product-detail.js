@@ -8,7 +8,7 @@ const addProductToCart = () => {
     const image = document.querySelector('#image').getAttribute('src');
     const quantity = 1;
 
-    const cart = cartLocalStorage.get('cart');
+    const cart = cartLocalStorage.get();
     const data = {
         productName,
         price,

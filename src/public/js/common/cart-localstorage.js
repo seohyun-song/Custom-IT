@@ -1,4 +1,6 @@
-const get = (keyName) => {
+const keyName = 'cart';
+
+const get = () => {
     const data = localStorage.getItem(keyName);
     if (!data) {
         return [];
@@ -7,7 +9,7 @@ const get = (keyName) => {
 };
 
 const set = (arr) => {
-    localStorage.setItem('cart', JSON.stringify(arr));
+    localStorage.setItem(keyName, JSON.stringify(arr));
 };
 
 export { get, set };

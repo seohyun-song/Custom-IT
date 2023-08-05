@@ -1,8 +1,8 @@
-const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
+import { validateRegExp } from '../constants/regexp.js';
+
 const $inputEmail = document.querySelector('#email');
 const $inputPw = document.querySelector('#password');
 const $loginForm = document.querySelector('#loginForm');
-const emailRegex = /[a-z0-9]+@admin.com/;
 
 $loginForm.addEventListener('submit', btnLogin);
 
@@ -18,7 +18,7 @@ async function btnLogin(e) {
         return alert('이메일 입력이 되지 않았습니다.');
     }
 
-    if (!emailRegex.test(email)) {
+    if (!validateRegExp.adminEmail.test(email)) {
         return alert('이메일 형식이 올바르지 않습니다.');
     }
 
