@@ -1,3 +1,5 @@
+import * as api from './common/api.js';
+
 const $inputPw = document.querySelector('#passwordInput');
 const $btnSecession = document.querySelector('#btnSecession');
 
@@ -8,15 +10,8 @@ async function btnDelete(e) {
     const data = { password };
 
     // 데이터 json 형태로 파싱
-    const jsonData = JSON.stringify(data);
     const apiUrl = '/api/users/info/delete';
-    const res = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: jsonData,
-    });
+    const res = await api.post(apiUrl, data);
 
     if (res.status === 200) {
         alert('회원탈퇴가 완료되었습니다.');

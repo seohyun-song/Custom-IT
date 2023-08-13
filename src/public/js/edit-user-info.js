@@ -1,11 +1,13 @@
+import { validateRegExp } from './constants/regexp.js';
+import * as api from './common/api.js';
+
 // 휴대폰 번호 유효성 검사
 const $phoneNumInput = document.querySelector('#phoneNumInput');
 function validatePhoneNum() {
     const $phoneNumInput = document.querySelector('#phoneNumInput');
     const $phoneNumCheck = document.querySelector('#phoneNumCheck');
-    const $phoneNumRegex = /^[0-9]+$/; //숫자로만 입력 가능
 
-    if ($phoneNumInput.value.match($phoneNumRegex)) {
+    if ($phoneNumInput.value.match(validateRegExp.phoneNumber)) {
         $phoneNumCheck.style.fontSize = '12px';
         $phoneNumCheck.textContent = '올바른 휴대폰 번호입니다.';
         $phoneNumCheck.style.color = 'blue';
@@ -36,7 +38,7 @@ async function editUserInfoChange() {
     const $phoneNumInput = document.querySelector('#phoneNumInput').value;
     const $addressInput = document.querySelector('#addressInput').value;
     const $detailAddressInput = document.querySelector('#detailAddress').value;
-
+    const apiUrl = '/api/users/info/edit';
     // 서버에 요청하여 수정된 정보를 받아옴
     const updatedData = {
         email: $emailInput,
@@ -50,13 +52,7 @@ async function editUserInfoChange() {
 
     try {
         // 서버에 수정된 정보 전송
-        const res = await fetch('/api/users/info/edit', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedData),
-        });
+        const res = await api.put(apiUrl, updatedData);
 
         if (res.ok) {
             // 성공적으로 수정되었을 경우 처리

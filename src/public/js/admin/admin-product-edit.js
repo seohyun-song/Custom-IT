@@ -1,3 +1,5 @@
+import * as api from '../common/api.js';
+
 const $inputName = document.querySelector('#inputName');
 const $inputDescription = document.querySelector('#inputDescription');
 const $inputCompany = document.querySelector('#inputCompany');
@@ -54,9 +56,8 @@ const $deleteProduct = document.querySelector('#deleteProduct');
 
 async function deleteProduct(event) {
     const id = event.target.getAttribute('data-id');
-    const res = await fetch(`/api/product/${id}`, {
-        method: 'DELETE',
-    });
+    const apiUrl = `/api/product/${id}`;
+    const res = await api.del(apiUrl);
 }
 
 $deleteProduct.addEventListener('click', deleteProduct);

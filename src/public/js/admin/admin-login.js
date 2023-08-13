@@ -1,8 +1,9 @@
-const emailCheck = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
+import { validateRegExp } from '../constants/regexp.js';
+import * as api from '../common/api.js';
+
 const $inputEmail = document.querySelector('#email');
 const $inputPw = document.querySelector('#password');
 const $loginForm = document.querySelector('#loginForm');
-const emailRegex = /[a-z0-9]+@admin.com/;
 
 $loginForm.addEventListener('submit', btnLogin);
 
@@ -18,7 +19,7 @@ async function btnLogin(e) {
         return alert('이메일 입력이 되지 않았습니다.');
     }
 
-    if (!emailRegex.test(email)) {
+    if (!validateRegExp.adminEmail.test(email)) {
         return alert('이메일 형식이 올바르지 않습니다.');
     }
 
@@ -26,15 +27,8 @@ async function btnLogin(e) {
         return alert('비밀번호를 입력하지 않았습니다.');
     }
 
-    const jsonData = JSON.stringify(data);
     const apiUrl = '/api/admin/login';
-    const res = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: jsonData,
-    });
+    const res = await api.post(apiUrl, data);
     if (res.status === 200) {
         window.location.href = '/admin/category';
     } else {

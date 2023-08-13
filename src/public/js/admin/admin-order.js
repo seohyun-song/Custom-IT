@@ -1,3 +1,5 @@
+import * as api from '../common/api.js';
+
 const $orderList = document.querySelector('#orderList');
 
 $orderList.addEventListener('click', (e) => {
@@ -13,13 +15,9 @@ $orderList.addEventListener('click', (e) => {
 async function updateDeliveryStatus(target) {
     const orderId = target.getAttribute('data-id');
     const deliveryStatus = target.value;
-    const res = await fetch(`/api/orders/${orderId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ orderId, deliveryStatus }),
-    });
+    const data = { orderId, deliveryStatus };
+    const apiUrl = `/api/orders/${orderId}`;
+    const res = await api.put(apiUrl, data);
 
     if (res.status === 201) {
         alert('배송 상태가 변경되었습니다.');
@@ -29,8 +27,7 @@ async function updateDeliveryStatus(target) {
 }
 async function deleteOrder(target) {
     const orderId = target.getAttribute('data-id');
-    const res = await fetch(`/api/orders/${orderId}`, {
-        method: 'DELETE',
-    });
+    const apiUrl = `/api/orders/${orderId}`;
+    const res = await api.del(apiUrl);
     window.location.reload();
 }

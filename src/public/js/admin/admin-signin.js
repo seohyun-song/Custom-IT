@@ -1,11 +1,13 @@
+import { validateRegExp } from '../constants/regexp.js';
+import * as api from '../common/api.js';
+
 // 이메일 유효성 검사
 const $emailInput = document.querySelector('#emailInput');
 async function validateEmail() {
     const $emailInput = document.querySelector('#emailInput');
     const $emailCheck = document.querySelector('#emailCheck');
-    const $emailRegex = /[a-z0-9]+@admin.com/;
 
-    if ($emailInput.value.match($emailRegex)) {
+    if ($emailInput.value.match(validateRegExp.adminEmail)) {
         $emailCheck.style.fontSize = '12px';
         $emailCheck.textContent = '올바른 이메일 형식입니다.';
         $emailCheck.style.color = 'blue';
@@ -30,13 +32,9 @@ async function checkEmailDuplicate() {
     const email = $emailInput.value;
 
     try {
-        const res = await fetch('/api/admin/join/emailDuplicate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-        });
+        const apiUrl = '/api/admin/join/emailDuplicate';
+        const data = { email };
+        const res = await api.post(apiUrl, data);
 
         if (res.ok) {
             const result = await res.json();
@@ -72,9 +70,8 @@ const $passwordInput = document.querySelector('#passwordInput');
 function validatePassword() {
     const $passwordInput = document.querySelector('#passwordInput');
     const $passwordCheck = document.querySelector('#passwordCheck');
-    const $passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,15}$/;
 
-    if ($passwordInput.value.match($passwordRegex)) {
+    if ($passwordInput.value.match(validateRegExp.password)) {
         $passwordCheck.style.fontSize = '12px';
         $passwordCheck.textContent = '안전한 비밀번호입니다.';
         $passwordCheck.style.color = 'blue';
@@ -114,9 +111,8 @@ const $nameInput = document.querySelector('#nameInput');
 function validateName() {
     const $nameInput = document.querySelector('#nameInput');
     const $nameCheck = document.querySelector('#nameCheck');
-    const $nameRegex = /^[가-힣]{2,4}$/;
 
-    if ($nameInput.value.match($nameRegex)) {
+    if ($nameInput.value.match(validateRegExp.name)) {
         $nameCheck.textContent = '';
         return true;
     } else {
@@ -161,13 +157,8 @@ async function registerAdmin() {
     }
 
     try {
-        const res = await fetch('/api/admin/join', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(adminData),
-        });
+        const apiUrl = '/api/admin/join';
+        const res = await api.post(apiUrl, adminData);
 
         if (res.ok) {
             window.location.href = res.url;
