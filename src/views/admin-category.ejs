@@ -1,123 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
     <head>
-        <%- include('../views/partials/head.ejs'); %>
-        <link rel="stylesheet" href="/css/admin.css">
-        <link rel="stylesheet" href="/css/admin-aside.css">
-        <link rel="stylesheet" href="/css/admin-category.css">
+        <%- include('../views/partials/admin-head.ejs'); %>
+        <link rel="stylesheet" href="/css/admin/admin-category.css" />
+
+        <script type="module" src="/js/admin/admin-category.js"></script>
+        <title>관리자 - 카테고리관리</title>
     </head>
     <body>
-        <div class="grid">
+        <div class="dashboard">
             <%- include('../views/partials/admin-aside.ejs'); %>
             <article class="article">
-                <h2>카테고리 관리</h2>
-                <section>          
+                <div class="title-box">
+                    <h2 class="title">카테고리 관리</h2>
+                </div>
+                <section>
                     <ul class="list-category" id="listCategory">
                         <% categories.forEach(function(category){ %>
                         <li class="list-category-li">
-                            
-                            <input type="text" value= "<%= category.name %>" oninput="validateCategory(event)" readonly="readonly">
-                            <p class="checkCategory" id="checkCategory"></p>
-                            
+                            <input
+                                type="text"
+                                class="input input-box"
+                                value="<%= category.name %>"
+                                readonly="readonly"
+                            />
+                            <p class="check-category"></p>
+
                             <div class="btn-box">
-                                <button class="btn btn-small" id="updateCategory" data-id="<%=
-                                category.id %>" onclick="updateCategory(event)"> 수정 </button>
-                                <button class="btn btn-small" id="deleteCategory" data-id="<%=
-                                category.id %>" onclick="deleteCategory(event); window.location.reload();"> 삭제 </button>
-                                <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="<%=
-                                category.id %>" onclick="addNewCategory(event); window.location.reload();"> 수정 완료 </button>
+                                <button
+                                    class="btn btn-main sm btn-update"
+                                    data-id="<%=
+                                category.id %>"
+                                >
+                                    수정
+                                </button>
+                                <button
+                                    class="btn btn-main-line sm btn-delete"
+                                    data-id="<%=
+                                category.id %>"
+                                >
+                                    삭제
+                                </button>
+                                <button
+                                    class="btn btn-main sm btn-add-newcategory"
+                                    data-id="<%=
+                                category.id %>"
+                                >
+                                    수정 완료
+                                </button>
                             </div>
                         </li>
                         <% }); %>
                     </ul>
-                    
 
                     <div class="add-category">
-                        <input type="text" id="inputCategory"/>
-                        <p class="checkCategory" id="checkCategory"></p>
+                        <input type="text" id="inputCategory" class="input input-box" />
+                        <p class="check-category" id="checkCategory"></p>
 
-                        <input type="submit" data-id="test" class="btn btn-small btn-submit" id="createCategory" value="등록"/>
+                        <input
+                            type="submit"
+                            data-id="test"
+                            class="btn btn-main sm btn-submit"
+                            id="createCategory"
+                            value="등록"
+                        />
                     </div>
                 </section>
             </article>
         </div>
-        <script>
-            const $inputCategory = document.querySelector('#inputCategory');
-            const $createCategory = document.querySelector('#createCategory');
-            const $listCategory = document.querySelector('#listCategory');
-
-            async function createCategory(){
-                const name = $inputCategory.value;
-                const categoryName = {name};
-                const res = await fetch('/api/category',{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                            },
-                    body: JSON.stringify(categoryName),
-                });
-                const data = await res.json()
-
-                $listCategory.insertAdjacentHTML(
-                    'beforeend',
-                    `   <li class="list-category-li">
-                            <div>
-                            <input type="text" value=${name} oninput="validateCategory(event)" readonly="readonly">
-                            <p class="checkCategory" id="checkCategory"></p>
-                            </div>
-                            <div class="btn-box">
-                                <button class="btn btn-small" id="updateCategory" data-id="${data.id}" 
-                                onclick="updateCategory(event)"> 수정 </button>
-                                <button class="btn btn-small" id="deleteCategory" data-id="${data.id}" 
-                                onclick="deleteCategory(event); window.location.reload();"> 삭제 </button>
-                                <button class="btn btn-small addNewCategory" id="addNewCategory" data-id="${data.id}" 
-                                onclick="addNewCategory(event); window.location.reload();"> 수정 완료 </button>
-                            </div>
-                        </li>`);
-            }
-            $createCategory.addEventListener('click', createCategory);
-
-            async function deleteCategory(event){
-                const id = event.target.getAttribute('data-id');
-                const res = await fetch(`/api/category/${id}`,{
-                    method: 'DELETE'
-                });
-            }
-
-            async function updateCategory(event){
-                const input = event.target.closest('.list-category-li').querySelector('input');
-                input.removeAttribute('readonly');
-                event.target.style.display = 'none';
-                event.target.parentNode.querySelector('#deleteCategory').style.display = 'none';
-                event.target.parentNode.querySelector('#addNewCategory').style.display = 'inline';
-            }
-
-            async function addNewCategory(event){
-                event.target.parentNode.querySelector('#updateCategory').style.display = 'inline'
-                event.target.parentNode.querySelector('#deleteCategory').style.display = 'inline';
-                event.target.style.display = 'none';
-                
-                const id = event.target.getAttribute('data-id');
-                const name = event.target.closest('.list-category-li').querySelector('input').value;
-                const categoryName = {name};
-                const res = await fetch(`/api/category/${id}`,{
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                            },
-                    body: JSON.stringify(categoryName),
-                });
-            }
-            
-            function validateCategory(event){
-                if(event.target.value.length>=10){
-                    event.target.parentNode.querySelector('#checkCategory').textContent = "카테고리명을 10자 미만으로 입력해주세요.";
-                }else{
-                    event.target.parentNode.querySelector('#checkCategory').textContent = '';
-            }}
-
-            $inputCategory.addEventListener('input',validateCategory);
-
-        </script>
     </body>
 </html>

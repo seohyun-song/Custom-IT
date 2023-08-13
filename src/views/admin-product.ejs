@@ -1,41 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
     <head>
-        <%- include('../views/partials/head.ejs'); %>
-        <link rel="stylesheet" href="/css/admin.css">
-        <link rel="stylesheet" href="/css/admin-aside.css">
-        <link rel="stylesheet" href="/css/admin-product.css">
+        <%- include('../views/partials/admin-head.ejs'); %>
+        <link rel="stylesheet" href="/css/admin/admin-product.css" />
+
+        <title>관리자 - 상품목록</title>
     </head>
     <body>
-        <div class="grid">
+        <div class="dashboard">
             <%- include('../views/partials/admin-aside.ejs'); %>
             <article class="article">
-                <h2>상품 목록</h2>
-                <section>     
-                    <table>
-                        <tr>
-                            <th>카테고리</th>
-                            <th>이미지</th>
-                            <th>상품명</th>
-                            <th>제조사</th>
-                            <th>가격</th>
-                        </tr>
-                        <% products.forEach(function(product){ %>
-                        <tr onclick="location.href='/admin/product/<%=product.id%>'">
-                            <td><%=product.categoryName%></td>
-                            <td><img class="image" src="/image/<%=product.image%>"></td>
-                            <td><%=product.name%></td>
-                            <td><%=product.company%></td>
-                            <td><%=product.price%></td>
-                        </tr>
-                        <%}); %>
-                    </table>
-                    <div class="btn-box">
-                    <button class="btn btn-add-product btn-large" onclick="location.href='/admin/product/add'">상품 등록</button>
+                <div class="title-box">
+                    <h2 class="title">상품 목록</h2>
+                    <button class="btn btn-main sm" onclick="location.href='/admin/product/add'">
+                        상품 등록
+                    </button>
+                </div>
+                <section class="product-list">
+                    <div class="tbl-box">
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>카테고리</th>
+                                    <th>이미지</th>
+                                    <th>상품명</th>
+                                    <th>제조사</th>
+                                    <th>가격</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% products.forEach(function(product){ %>
+                                <tr onclick="location.href='/admin/product/<%=product.id%>'">
+                                    <td><%=product.categoryName%></td>
+                                    <td><img class="image" src="/image/<%=product.image%>" /></td>
+                                    <td><%=product.name%></td>
+                                    <td><%=product.company%></td>
+                                    <td><%=product.price%></td>
+                                </tr>
+                                <%}); %>
+                            </tbody>
+                        </table>
                     </div>
-                </section>    
+                </section>
             </article>
         </div>
     </body>
-
 </html>

@@ -1,9 +1,4 @@
 /* 서브 페이지 */
-a {
-    text-decoration: none;
-    color: #303030;
-}
-
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -42,17 +37,15 @@ a {
 }
 
 .product-list .product .btn-add-cart {
-    display: inline-block;
+    z-index: 100;
     position: absolute;
     right: 10px;
     bottom: 10px;
-    width: 28px;
-    height: 28px;
-    border: none;
-    outline: none;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: #a586f6 url('../image/icon-cart-white.png') no-repeat center / 16px;
-    cursor: pointer;
+    background: url('../image/icon-cart-white.png') no-repeat center / 16px;
+    background-color: rgb(165, 134, 246, 0.8);
 }
 
 .product-list .product .product-info {
