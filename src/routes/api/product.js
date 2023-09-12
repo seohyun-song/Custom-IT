@@ -4,6 +4,7 @@ const { nanoid } = require('nanoid');
 const productService = require('../../services/product');
 
 const asyncHandler = require('../../utils/async-handler');
+const { valiedatePostProduct, validatePutProduct } = require('../../middlewares/product-validate');
 const upload = require('../../middlewares/multer');
 const { Product } = require('../../data-access');
 
@@ -12,24 +13,9 @@ const router = Router();
 router.post(
     '/',
     upload.single('productImage'),
+    valiedatePostProduct,
     asyncHandler(async (req, res) => {
         const { name, price, description, company, categoryName } = req.body;
-
-        if (!name || !price || !description || !company || !categoryName) {
-            const error = new Error('모든 값은 필수 값입니다.');
-            error.statusCode = 400;
-            throw error;
-        }
-
-        if (
-            req.file.mimetype !== 'image/png' &&
-            req.file.mimetype !== 'image/jpg' &&
-            req.file.mimetype !== 'image/jpeg'
-        ) {
-            const error = new Error('.png, .jpeg, .jpg 파일만 업로드 가능합니다.');
-            error.statusCode = 400;
-            throw error;
-        }
 
         const id = nanoid(10);
 
@@ -50,30 +36,16 @@ router.post(
 router.post(
     '/:id',
     upload.single('productImage'),
+    validatePutProduct,
     asyncHandler(async (req, res) => {
         const { id } = req.params;
         const { name, price, description, company, categoryName } = req.body;
-
-        if (!name || !price || !description || !company || !categoryName) {
-            const error = new Error('모든 값은 필수 값입니다.');
-            error.statusCode = 400;
-            throw error;
-        }
         let image;
         if (!req.file) {
             const product = await Product.find({ id });
             image = product.image;
         } else {
             image = `${req.file.originalname}`;
-            if (
-                req.file.mimetype !== 'image/png' &&
-                req.file.mimetype !== 'image/jpg' &&
-                req.file.mimetype !== 'image/jpeg'
-            ) {
-                const error = new Error('.png, .jpeg, .jpg 파일만 업로드 가능합니다.');
-                error.statusCode = 400;
-                throw error;
-            }
         }
 
         productService.updateProduct({
