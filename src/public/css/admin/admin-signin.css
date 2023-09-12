@@ -1,0 +1,35 @@
+/* 관리자 - 회원가입 */
+main.contents {
+    min-height: 100%;
+    padding-bottom: 400px;
+}
+
+main.contents .contents-inner {
+    width: 1280px;
+    margin: 0 auto;
+    padding: 120px 20px 100px;
+    box-sizing: border-box;
+}
+
+.admin-signin-wrap {
+    width: 560px;
+    margin: 0 auto;
+}
+
+.admin-signin-wrap .title {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.admin-signin-wrap .login-page {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(185, 185, 185, 1);
+}
+
+.admin-signin-wrap .login-page .btn {
+    text-decoration: underline;
+    font-weight: bold;
+}
